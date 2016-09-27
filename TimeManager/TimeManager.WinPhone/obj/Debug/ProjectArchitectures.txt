@@ -1,2 +1,2 @@
-D:\Workspace\Git\TimeManager\TimeManager\TimeManager.WinPhone\TimeManager.WinPhone.csproj;neutral
-D:\Workspace\Git\TimeManager\TimeManager\TimeManager\TimeManager.csproj;neutral
+D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.WinPhone\TimeManager.WinPhone.csproj;neutral
+D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager\TimeManager.csproj;neutral

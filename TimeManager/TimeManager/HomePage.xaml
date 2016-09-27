@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
+  <TabbedPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="labelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+      <Style x:Key="graphlabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="Grid.Row" Value="6" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+      </Style>
+      <Style x:Key="barBoxViewStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="Black" />
+        <Setter Property="WidthRequest" Value="25" />
+        <Setter Property="Grid.RowSpan" Value="6" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="End" />
+      </Style>
+    </ResourceDictionary>
+  </TabbedPage.Resources>
+  <TabbedPage.Children>
+    <ContentPage Title="Manager" BackgroundColor="#FFFFFF" >
+      <Grid Padding="12">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="4"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Text="IN" Grid.Row="0" TextColor="Green" FontSize="32"/>
+        <Button Text="OUT" Grid.Row="2" TextColor="Red" FontSize="32" />
+      </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Today" BackgroundColor="#FFFFFF">
+      <Grid Padding="12">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="Center">
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Label Text="IN Time:"  Style="{StaticResource labelStyle}"/>
+            <Label Text="8.30 AM" Style="{StaticResource labelStyle}"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="OUT Time:"  Style="{StaticResource labelStyle}"/>
+            <Label Text="5.30 PM"  Style="{StaticResource labelStyle}"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,24,0,0" >
+            <Label Text="Total Time:"  Style="{StaticResource labelStyle}" FontSize="32"/>
+            <Label Text="8 Hrs"  Style="{StaticResource labelStyle}" FontSize="32"/>
+          </StackLayout>
+        </StackLayout>
+        <Button Text="View Complete History" Grid.Row="1" FontSize="24"/>
+      </Grid>
+    </ContentPage>
+    <ContentPage Title="Week" BackgroundColor="#FFFFFF">
+      <Grid Padding="12">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="75"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,24,0,0" >
+          <Label Text="Total Time:"  Style="{StaticResource labelStyle}" FontSize="32"/>
+          <Label Text="40 Hrs"  Style="{StaticResource labelStyle}" FontSize="32"/>
+        </StackLayout>
+        <Grid Grid.Row="1" Padding="12">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <BoxView WidthRequest="1" BackgroundColor="Black" Grid.RowSpan="6" HorizontalOptions="Start"/>
+          <BoxView HeightRequest="1" Grid.Row="5" BackgroundColor="Black" Grid.ColumnSpan="5" VerticalOptions="End"/>
+          <Label Text="Mon" Grid.Column="0" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Tue" Grid.Column="1" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Wed" Grid.Column="2" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Thu" Grid.Column="3" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Fri" Grid.Column="4" Style="{StaticResource graphlabelStyle}"/>
+          <BoxView Grid.Column="0"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="1"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="2" HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="3"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="4"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+        </Grid>
+
+        <Button Text="View Complete History" Grid.Row="2" FontSize="24"/>
+      </Grid>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>
