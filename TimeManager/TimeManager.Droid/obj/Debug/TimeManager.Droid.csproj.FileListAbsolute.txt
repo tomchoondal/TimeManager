@@ -75,7 +75,6 @@ D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\Xamarin.
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\TimeManager.Droid.dll
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\TimeManager.Droid.pdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\android\bin\TimeManager.Droid.apk
-D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\res\layout\tabs.xml
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\res\drawable\icon.png
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\res\drawable-hdpi\icon.png
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\res\drawable-xhdpi\icon.png
@@ -84,7 +83,6 @@ D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\res\valu
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\R.cs.flag
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\uploadflags.txt
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\TimeManager.Droid.dll.mdb
-D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\TimeManager.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\Java.Interop.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\Mono.Android.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\mscorlib.dll.mdb
@@ -96,6 +94,7 @@ D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\System.R
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\System.ServiceModel.Internals.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\System.Xml.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\System.Xml.Linq.dll.mdb
+D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\bin\Debug\TimeManager.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\android\assets\Java.Interop.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\android\assets\Mono.Android.dll.mdb
 D:\Workspace\Git\T1\TimeManager\TimeManager\TimeManager.Droid\obj\Debug\android\assets\mscorlib.dll.mdb

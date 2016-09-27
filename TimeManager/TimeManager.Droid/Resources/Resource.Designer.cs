@@ -3646,9 +3646,6 @@ namespace TimeManager.Droid
 			// aapt resource value: 0x7f0b0012
 			public const int showTitle = 2131427346;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int sliding_tabs = 2131427457;
-			
 			// aapt resource value: 0x7f0b0065
 			public const int snackbar_action = 2131427429;
 			
@@ -3914,9 +3911,6 @@ namespace TimeManager.Droid
 			
 			// aapt resource value: 0x7f03002f
 			public const int support_simple_spinner_dropdown_item = 2130903087;
-			
-			// aapt resource value: 0x7f030030
-			public const int tabs = 2130903088;
 			
 			static Layout()
 			{

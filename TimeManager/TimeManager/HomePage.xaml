@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
   <TabbedPage.Resources>
     <ResourceDictionary>
+      <Color x:Key="PrimaryColor">#3F51B5</Color>
       <Style x:Key="labelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
         <Setter Property="FontSize" Value="24" />
@@ -21,6 +22,11 @@
         <Setter Property="WidthRequest" Value="25" />
         <Setter Property="Grid.RowSpan" Value="6" />
         <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="End" />
+      </Style>
+      <Style x:Key="horizontalseperatorBoxViewStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="Black" />
+        <Setter Property="HeightRequest" Value="1" />
         <Setter Property="VerticalOptions" Value="End" />
       </Style>
     </ResourceDictionary>
@@ -42,7 +48,7 @@
       <Grid Padding="12">
         <Grid.RowDefinitions>
           <RowDefinition Height="*"/>
-          <RowDefinition Height="75"/>
+          <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackLayout VerticalOptions="Center">
           <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
@@ -58,7 +64,7 @@
             <Label Text="8 Hrs"  Style="{StaticResource labelStyle}" FontSize="32"/>
           </StackLayout>
         </StackLayout>
-        <Button Text="View Complete History" Grid.Row="1" FontSize="24"/>
+        <Button Text="View Complete History" Grid.Row="1" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>
     <ContentPage Title="Week" BackgroundColor="#FFFFFF">
@@ -66,7 +72,7 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="75"/>
           <RowDefinition Height="*"/>
-          <RowDefinition Height="75"/>
+          <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,24,0,0" >
           <Label Text="Total Time:"  Style="{StaticResource labelStyle}" FontSize="32"/>
@@ -88,9 +94,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
           </Grid.ColumnDefinitions>
-          <BoxView WidthRequest="1" BackgroundColor="Black" Grid.RowSpan="6" HorizontalOptions="Start"/>
-          <BoxView HeightRequest="1" Grid.Row="5" BackgroundColor="Black" Grid.ColumnSpan="5" VerticalOptions="End"/>
+          <BoxView WidthRequest="1" BackgroundColor="Black" Grid.RowSpan="6" HorizontalOptions="Start" />
+          <BoxView  Grid.Row="5"  Grid.ColumnSpan="5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
+          <BoxView  Grid.Row="1"  Grid.ColumnSpan="5" Opacity="0.5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
+          <BoxView  Grid.Row="2"  Grid.ColumnSpan="5" Opacity="0.5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
           <Label Text="Mon" Grid.Column="0" Style="{StaticResource graphlabelStyle}"/>
           <Label Text="Tue" Grid.Column="1" Style="{StaticResource graphlabelStyle}"/>
           <Label Text="Wed" Grid.Column="2" Style="{StaticResource graphlabelStyle}"/>
@@ -103,7 +112,7 @@
           <BoxView Grid.Column="4"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
         </Grid>
 
-        <Button Text="View Complete History" Grid.Row="2" FontSize="24"/>
+        <Button Text="View Complete History" Grid.Row="2" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>
   </TabbedPage.Children>

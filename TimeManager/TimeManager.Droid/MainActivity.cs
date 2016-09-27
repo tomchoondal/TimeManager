@@ -10,7 +10,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace TimeManager.Droid
 {
-    [Activity(Label = "Time Manager", Icon = "@drawable/icon", MainLauncher = true,  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Time Manager", Icon = "@drawable/icon", MainLauncher = true,  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

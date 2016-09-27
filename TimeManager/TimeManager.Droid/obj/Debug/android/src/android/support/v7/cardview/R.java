@@ -2391,7 +2391,6 @@ containing a value of this type.
         public static int showCustom=0x7f0b0010;
         public static int showHome=0x7f0b0011;
         public static int showTitle=0x7f0b0012;
-        public static int sliding_tabs=0x7f0b0081;
         public static int snackbar_action=0x7f0b0065;
         public static int snackbar_text=0x7f0b0064;
         public static int split_action_bar=0x7f0b0007;
@@ -2476,7 +2475,6 @@ containing a value of this type.
         public static int select_dialog_multichoice_material=0x7f03002d;
         public static int select_dialog_singlechoice_material=0x7f03002e;
         public static int support_simple_spinner_dropdown_item=0x7f03002f;
-        public static int tabs=0x7f030030;
     }
     public static final class string {
         public static int ApplicationName=0x7f05001f;
