@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
   <TabbedPage.Resources>
     <ResourceDictionary>
@@ -36,11 +36,21 @@
       <Grid Padding="12">
         <Grid.RowDefinitions>
           <RowDefinition Height="*"/>
-          <RowDefinition Height="4"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Text="IN" Grid.Row="0" TextColor="Green" FontSize="32"/>
-        <Button Text="OUT" Grid.Row="2" TextColor="Red" FontSize="32" />
+        <StackLayout Padding="12" >
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Label Text="Good Morning"  Style="{StaticResource labelStyle}"/>
+            <Label Text="Tom" Style="{StaticResource labelStyle}"/>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Label Text="You are "  Style="{StaticResource labelStyle}"/>
+            <Label Text="OUT" Style="{StaticResource labelStyle}"/>
+            <Label Text="Now" Style="{StaticResource labelStyle}"/>
+          </StackLayout>
+          <Label Text="Just tap to enter" Style="{StaticResource labelStyle}" HorizontalOptions="Center"/>
+        </StackLayout>
+        <Button Text="IN" Grid.Row="1" TextColor="Red" BackgroundColor="{StaticResource PrimaryColor}" FontSize="32" />
       </Grid>
     </ContentPage>
 
