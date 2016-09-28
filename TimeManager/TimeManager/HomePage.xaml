@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
              x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
+  <TabbedPage.BindingContext>
+        <viewModel:HomeViewModel />
+  </TabbedPage.BindingContext>
   <TabbedPage.Resources>
     <ResourceDictionary>
       <Color x:Key="PrimaryColor">#3F51B5</Color>
@@ -45,12 +48,12 @@
           </StackLayout>
           <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
             <Label Text="You are "  Style="{StaticResource labelStyle}"/>
-            <Label Text="OUT" Style="{StaticResource labelStyle}"/>
+            <Label Text="{Binding InActiveText}" Style="{StaticResource labelStyle}"/>
             <Label Text="Now" Style="{StaticResource labelStyle}"/>
           </StackLayout>
           <Label Text="Just tap to enter" Style="{StaticResource labelStyle}" HorizontalOptions="Center"/>
         </StackLayout>
-        <Button Text="IN" Grid.Row="1" TextColor="Red" BackgroundColor="{StaticResource PrimaryColor}" FontSize="32" />
+        <Button Text="{Binding ActiveText}" Command="{Binding InOutCommand}" Grid.Row="1" TextColor="Red" BackgroundColor="{StaticResource PrimaryColor}" FontSize="32" />
       </Grid>
     </ContentPage>
 
