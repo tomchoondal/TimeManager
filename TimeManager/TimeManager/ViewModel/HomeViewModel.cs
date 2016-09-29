@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using TimeManager.Helpers;
 using TimeManager.Model;
@@ -16,6 +14,9 @@ namespace TimeManager.ViewModel
         private List<Session> allSession;
         private string activeText;
         private string inActiveText;
+        private string inTimeText;
+        private string outTimeText;
+        private string timeDiffText;
 
         private ICommand inOutCommand;
 
@@ -72,12 +73,6 @@ namespace TimeManager.ViewModel
             }
         }
 
-        private void ComputeActiveText()
-        {
-            ActiveText = GetActiveText(isActive);
-            InActiveText = GetActiveText(!isActive);
-        }
-
         public string ActiveText
         {
             get
@@ -104,6 +99,72 @@ namespace TimeManager.ViewModel
             }
         }
 
+        public string OutTimeText
+        {
+            get
+            {
+                return outTimeText;
+            }
+            set
+            {
+                outTimeText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string InTimeText
+        {
+            get
+            {
+                return inTimeText;
+            }
+            set
+            {
+                inTimeText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string TimeDiffText
+        {
+            get
+            {
+                return timeDiffText;
+            }
+            set
+            {
+                timeDiffText = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private void ComputeActiveText()
+        {
+            ActiveText = GetActiveText(isActive);
+            InActiveText = GetActiveText(!isActive);
+
+            if (LastSession != null)
+            {
+                var beginTime = LastSession.BeginTime;
+                if (beginTime != null && beginTime.IsActive)
+                {
+                    InTimeText = string.Format("{0:t}", beginTime.Time);
+                }
+
+                var endTime = LastSession.EndTime;
+                if (endTime != null && !endTime.IsActive)
+                {
+                    OutTimeText = string.Format("{0:t}", endTime.Time);
+                }
+
+                if (beginTime != null && endTime != null)
+                {
+                    TimeSpan timeDiff = endTime.Time - beginTime.Time;
+                    TimeDiffText = string.Format("{0}h:{1}m", timeDiff.Hours, timeDiff.Minutes);
+                }
+            }
+        }
+
         public string GetActiveText(bool isActive)
         {
             return isActive ? "OUT" : "IN";
@@ -111,16 +172,18 @@ namespace TimeManager.ViewModel
 
         private void OnInOutCommand()
         {
-            Session activeSession = AllSession.FirstOrDefault(s => s.BeginTime.Date == DateTime.Now.Date);
-            if (activeSession == null)
+            LastSession = AllSession.FirstOrDefault(s => s.BeginTime != null && s.BeginTime.Time.Date == DateTime.Now.Date);
+            if (LastSession == null)
             {
-                activeSession = new Session(DateTime.Now);
-                AllSession.Add(activeSession);
+                LastSession = new Session(DateTime.Now);
+                AllSession.Add(LastSession);
                 IsActive = true;
             }
             else
             {
-                IsActive = !IsActive;
+                bool activeChange = !IsActive;
+                LastSession.AddToTimeLine(DateTime.Now, activeChange);
+                IsActive = activeChange;
             }
         }
     }
