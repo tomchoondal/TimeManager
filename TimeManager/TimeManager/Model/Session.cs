@@ -6,13 +6,19 @@ namespace TimeManager.Model
 {
     public class Session
     {
+        #region Methods
+
         public Session() { }
 
         public Session(DateTime dateTime)
         {
             TimeLine = new List<TimeInfo>();
             TimeLine.Add(new TimeInfo(dateTime, true));
-        }
+        } 
+
+        #endregion
+
+        #region Properties
 
         public TimeInfo BeginTime
         {
@@ -30,24 +36,17 @@ namespace TimeManager.Model
             }
         }
 
+        public List<TimeInfo> TimeLine { get; set; }
+
+        #endregion
+
+        #region Methods
+
         public void AddToTimeLine(DateTime dateTime, bool isActive)
         {
             TimeLine.Add(new TimeInfo(dateTime, isActive));
-        }
+        } 
 
-        public List<TimeInfo> TimeLine { get; set; }
-    }
-
-    public class TimeInfo
-    {
-        public TimeInfo(DateTime dateTime, bool isActive)
-        {
-            this.Time = dateTime;
-            this.IsActive = isActive;
-        }
-
-        public bool IsActive { get; set; }
-
-        public DateTime Time { get; set; }
+        #endregion
     }
 }

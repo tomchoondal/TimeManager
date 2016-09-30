@@ -77,7 +77,7 @@
             <Label Text="{Binding TimeDiffText}"  Style="{StaticResource labelStyle}" FontSize="32"/>
           </StackLayout>
         </StackLayout>
-        <Button Text="View Complete History" Grid.Row="1" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
+        <Button Text="View Complete History" Clicked="HistoryToday_Clicked" Grid.Row="1" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>
     <ContentPage Title="Week" BackgroundColor="#FFFFFF">

@@ -26,6 +26,8 @@ namespace TimeManager.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::TimeManager.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::TimeManager.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::TimeManager.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::TimeManager.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::TimeManager.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

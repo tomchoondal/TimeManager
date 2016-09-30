@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TimeManager.Helpers;
 using TimeManager.Model;
 
 namespace TimeManager.ViewModel
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : PageViewModel
     {
+        #region Fields
+
         private Session lastSession;
         private bool isActive;
         private List<Session> allSession;
@@ -17,15 +21,22 @@ namespace TimeManager.ViewModel
         private string inTimeText;
         private string outTimeText;
         private string timeDiffText;
+        private FileManager fileManager;
 
         private ICommand inOutCommand;
 
+        #endregion
+
+        #region Constructors
+
         public HomeViewModel()
         {
-            AllSession = new List<Session>();
-            ComputeActiveText();
+            fileManager = new FileManager("content.json");
         }
 
+        #endregion
+
+        #region Commands
 
         public ICommand InOutCommand
         {
@@ -35,6 +46,10 @@ namespace TimeManager.ViewModel
                   (inOutCommand = new RelayCommand(OnInOutCommand));
             }
         }
+
+        #endregion
+
+        #region Properties
 
         public List<Session> AllSession
         {
@@ -138,10 +153,16 @@ namespace TimeManager.ViewModel
             }
         }
 
+        #endregion
+
+        #region Methods
+
         private void ComputeActiveText()
         {
             ActiveText = GetActiveText(isActive);
             InActiveText = GetActiveText(!isActive);
+
+            ComputeLastSession();
 
             if (LastSession != null)
             {
@@ -172,7 +193,7 @@ namespace TimeManager.ViewModel
 
         private void OnInOutCommand()
         {
-            LastSession = AllSession.FirstOrDefault(s => s.BeginTime != null && s.BeginTime.Time.Date == DateTime.Now.Date);
+            ComputeLastSession();
             if (LastSession == null)
             {
                 LastSession = new Session(DateTime.Now);
@@ -185,6 +206,50 @@ namespace TimeManager.ViewModel
                 LastSession.AddToTimeLine(DateTime.Now, activeChange);
                 IsActive = activeChange;
             }
+            SaveAllSessionsAsync();
         }
+
+        private void ComputeLastSession()
+        {
+            LastSession = AllSession.FirstOrDefault(s => s.BeginTime != null && s.BeginTime.Time.Date == DateTime.Now.Date);
+        }
+
+        public async override Task Init()
+        {
+            AllSession = await GetAllSessionsAsync();
+            ComputeActiveText();
+        }
+
+        private async Task<List<Session>> GetAllSessionsAsync()
+        {
+            List<Session> session = null;
+            string content = await fileManager.GetTextAsync();
+            if (content != null)
+            {
+                try
+                {
+                    session = JsonConvert.DeserializeObject<List<Session>>(content);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            if (session == null)
+            {
+                session = new List<Session>();
+            }
+            return session;
+        }
+
+        private async void SaveAllSessionsAsync()
+        {
+            if (AllSession != null)
+            {
+                string content = JsonConvert.SerializeObject(AllSession);
+                await fileManager.SetTextAsync(content);
+            }
+        }
+
+        #endregion
     }
 }

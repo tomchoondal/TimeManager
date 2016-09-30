@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
+             x:Class="TimeManager.HistoryToday" Title="History Today" BackgroundColor="#FFFFFF">
+  <ContentPage.BindingContext>
+    <viewModel:HistoryTodayViewModel />
+  </ContentPage.BindingContext>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="labelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+      <DataTemplate x:Key="TimeLineTemplate">
+        <ViewCell>
+          <Label Text="{Binding Time}" Style="{StaticResource labelStyle}" />
+        </ViewCell>
+      </DataTemplate>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid>
+    <ListView ItemsSource="{Binding Session.TimeLine}" ItemTemplate="{StaticResource TimeLineTemplate}"/>
+  </Grid>
+</ContentPage>
