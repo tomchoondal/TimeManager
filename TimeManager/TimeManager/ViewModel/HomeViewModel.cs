@@ -21,18 +21,8 @@ namespace TimeManager.ViewModel
         private string inTimeText;
         private string outTimeText;
         private string timeDiffText;
-        private FileManager fileManager;
 
         private ICommand inOutCommand;
-
-        #endregion
-
-        #region Constructors
-
-        public HomeViewModel()
-        {
-            fileManager = new FileManager("content.json");
-        }
 
         #endregion
 
@@ -191,7 +181,7 @@ namespace TimeManager.ViewModel
             return isActive ? "OUT" : "IN";
         }
 
-        private void OnInOutCommand()
+        private async void OnInOutCommand()
         {
             ComputeLastSession();
             if (LastSession == null)
@@ -206,7 +196,7 @@ namespace TimeManager.ViewModel
                 LastSession.AddToTimeLine(DateTime.Now, activeChange);
                 IsActive = activeChange;
             }
-            SaveAllSessionsAsync();
+            await ContentDataProvider.Instance.SaveAllSessionsAsync(allSession);
         }
 
         private void ComputeLastSession()
@@ -216,38 +206,8 @@ namespace TimeManager.ViewModel
 
         public async override Task Init()
         {
-            AllSession = await GetAllSessionsAsync();
+            AllSession = await ContentDataProvider.Instance.GetAllSessionsAsync();
             ComputeActiveText();
-        }
-
-        private async Task<List<Session>> GetAllSessionsAsync()
-        {
-            List<Session> session = null;
-            string content = await fileManager.GetTextAsync();
-            if (content != null)
-            {
-                try
-                {
-                    session = JsonConvert.DeserializeObject<List<Session>>(content);
-                }
-                catch (Exception)
-                {
-                }
-            }
-            if (session == null)
-            {
-                session = new List<Session>();
-            }
-            return session;
-        }
-
-        private async void SaveAllSessionsAsync()
-        {
-            if (AllSession != null)
-            {
-                string content = JsonConvert.SerializeObject(AllSession);
-                await fileManager.SetTextAsync(content);
-            }
         }
 
         #endregion

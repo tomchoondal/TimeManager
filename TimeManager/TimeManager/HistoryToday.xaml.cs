@@ -12,7 +12,8 @@ namespace TimeManager
     {
         public HistoryToday()
         {
-            InitializeComponent(); ViewModel = (this.BindingContext as HistoryTodayViewModel);
+            InitializeComponent();
+            ViewModel = (this.BindingContext as HistoryTodayViewModel);
         }
 
         public HistoryTodayViewModel ViewModel { get; set; }

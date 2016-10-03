@@ -13,16 +13,6 @@ namespace TimeManager.ViewModel
         #region Fields
 
         private Session session;
-        private FileManager fileManager;
-
-        #endregion
-
-        #region Constructors
-
-        public HistoryTodayViewModel()
-        {
-            fileManager = new FileManager("content.json");
-        }
 
         #endregion
 
@@ -47,29 +37,8 @@ namespace TimeManager.ViewModel
 
         public async override Task Init()
         {
-            List<Session> allSessions = await GetAllSessionsAsync();
+            List<Session> allSessions = await ContentDataProvider.Instance.GetAllSessionsAsync();
             Session = allSessions.FirstOrDefault(s => s.BeginTime != null && s.BeginTime.Time.Date == DateTime.Now.Date);
-        }
-
-        private async Task<List<Session>> GetAllSessionsAsync()
-        {
-            List<Session> session = null;
-            string content = await fileManager.GetTextAsync();
-            if (content != null)
-            {
-                try
-                {
-                    session = JsonConvert.DeserializeObject<List<Session>>(content);
-                }
-                catch (Exception)
-                {
-                }
-            }
-            if (session == null)
-            {
-                session = new List<Session>();
-            }
-            return session;
         }
 
         #endregion

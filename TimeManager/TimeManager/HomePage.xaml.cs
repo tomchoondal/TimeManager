@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeManager.ViewModel;
 using Xamarin.Forms;
 
@@ -27,6 +23,11 @@ namespace TimeManager
         private void HistoryToday_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new HistoryToday());
+        }
+
+        private void AllHistory_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AllHistory());
         }
 
         protected override void OnDisappearing()

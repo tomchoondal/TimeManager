@@ -74,10 +74,10 @@
           </StackLayout>
           <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,24,0,0" >
             <Label Text="Total Time:"  Style="{StaticResource labelStyle}" FontSize="32"/>
-            <Label Text="{Binding TimeDiffText}"  Style="{StaticResource labelStyle}" FontSize="32"/>
+            <Label Text="{Binding LastSession.TimeDiffText}"  Style="{StaticResource labelStyle}" FontSize="32"/>
           </StackLayout>
         </StackLayout>
-        <Button Text="View Complete History" Clicked="HistoryToday_Clicked" Grid.Row="1" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
+        <Button Text="View Today's History" Clicked="HistoryToday_Clicked" Grid.Row="1" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>
     <ContentPage Title="Week" BackgroundColor="#FFFFFF">
@@ -125,7 +125,7 @@
           <BoxView Grid.Column="4"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
         </Grid>
 
-        <Button Text="View Complete History" Grid.Row="2" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
+        <Button Text="View Complete History" Clicked="AllHistory_Clicked" Grid.Row="2" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>
   </TabbedPage.Children>
