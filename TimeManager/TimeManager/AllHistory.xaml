@@ -15,7 +15,10 @@
       </Style>
       <DataTemplate x:Key="TimeLineTemplate">
         <ViewCell>
-          <Label Text="{Binding TimeDiffText}" Style="{StaticResource labelStyle}" />
+          <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding DayOfWeek}" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding TimeDiffText}" Style="{StaticResource labelStyle}" />
+          </StackLayout>
         </ViewCell>
       </DataTemplate>
     </ResourceDictionary>

@@ -23,6 +23,8 @@ namespace TimeManager.ViewModel
         private string timeDiffText;
 
         private ICommand inOutCommand;
+        private ICommand navigateToHistoryToday;
+        private ICommand navigateToAllHistory;
 
         #endregion
 
@@ -34,6 +36,24 @@ namespace TimeManager.ViewModel
             {
                 return inOutCommand ??
                   (inOutCommand = new RelayCommand(OnInOutCommand));
+            }
+        }
+
+        public ICommand NavigateToHistoryToday
+        {
+            get
+            {
+                return navigateToHistoryToday ??
+                  (navigateToHistoryToday = new RelayCommand(OnNavigateToHistoryToday));
+            }
+        }
+
+        public ICommand NavigateToAllHistory
+        {
+            get
+            {
+                return navigateToAllHistory ??
+                (navigateToAllHistory = new RelayCommand(OnNavigateToAllHistory));
             }
         }
 
@@ -188,15 +208,30 @@ namespace TimeManager.ViewModel
             {
                 LastSession = new Session(DateTime.Now);
                 AllSession.Add(LastSession);
-                IsActive = true;
             }
             else
             {
-                bool activeChange = !IsActive;
+                bool activeChange = !LastSession.IsActive;
                 LastSession.AddToTimeLine(DateTime.Now, activeChange);
-                IsActive = activeChange;
             }
+            ComputeActiveState();
             await ContentDataProvider.Instance.SaveAllSessionsAsync(allSession);
+        }
+
+        private void ComputeActiveState()
+        {
+            ComputeLastSession();
+            IsActive = LastSession != null ? LastSession.IsActive : false;
+        }
+
+        private void OnNavigateToHistoryToday()
+        {
+            App.NavigationService.Push(new HistoryToday());
+        }
+
+        private void OnNavigateToAllHistory()
+        {
+            App.NavigationService.Push(new AllHistory());
         }
 
         private void ComputeLastSession()
@@ -207,7 +242,7 @@ namespace TimeManager.ViewModel
         public async override Task Init()
         {
             AllSession = await ContentDataProvider.Instance.GetAllSessionsAsync();
-            ComputeActiveText();
+            ComputeActiveState();
         }
 
         #endregion

@@ -15,7 +15,14 @@
       </Style>
       <DataTemplate x:Key="TimeLineTemplate">
         <ViewCell>
-          <Label Text="{Binding Time}" Style="{StaticResource labelStyle}" />
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width=".2*"/>
+              <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding ActiveText}" Style="{StaticResource labelStyle}" />
+            <Label Grid.Column="1" Text="{Binding Time}" Style="{StaticResource labelStyle}" />
+          </Grid>
         </ViewCell>
       </DataTemplate>
     </ResourceDictionary>

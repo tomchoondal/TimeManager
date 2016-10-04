@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TimeManager.ViewModel;
+using TimeManager.Model;
 
-namespace TimeManager.Model
+namespace TimeManager.ViewModel
 {
     public class Session : ViewModelBase
     {
@@ -12,6 +12,7 @@ namespace TimeManager.Model
         private TimeInfo beginTime;
         private TimeInfo endTime;
         private string timeDiffText;
+        private bool isActive;
 
         #endregion
 
@@ -56,6 +57,29 @@ namespace TimeManager.Model
             {
                 endTime = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public TimeInfo LastEntry { get; set; }
+
+        public bool IsActive
+        {
+            get
+            {
+                return isActive;
+            }
+            set
+            {
+                isActive = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string DayOfWeek
+        {
+            get
+            {
+                return BeginTime != null ? BeginTime.Time.DayOfWeek.ToString() : string.Empty;
             }
         }
 
@@ -113,6 +137,11 @@ namespace TimeManager.Model
                 SessionTime = timeDiff;
 
                 TimeDiffText = string.Format("{0}h:{1}m", timeDiff.Hours, timeDiff.Minutes);
+            }
+            LastEntry = TimeLine?.LastOrDefault();
+            if (LastEntry != null)
+            {
+                IsActive = LastEntry.IsActive;
             }
         }
 

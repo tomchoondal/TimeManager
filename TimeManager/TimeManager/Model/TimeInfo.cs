@@ -18,7 +18,15 @@ namespace TimeManager.Model
 
         public bool IsActive { get; set; }
 
-        public DateTime Time { get; set; } 
+        public DateTime Time { get; set; }
+
+        public string ActiveText
+        {
+            get
+            {
+                return IsActive ? "In" : "Out";
+            }
+        }
 
         #endregion
     }
