@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
+             xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"
              x:Class="TimeManager.HistoryToday" Title="History Today" BackgroundColor="#FFFFFF">
   <ContentPage.BindingContext>
     <viewModel:HistoryTodayViewModel />
@@ -10,24 +11,31 @@
     <ResourceDictionary>
       <Style x:Key="labelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="VerticalOptions" Value="Center" />
       </Style>
       <DataTemplate x:Key="TimeLineTemplate">
         <ViewCell>
-          <Grid>
+          <Grid Padding="0,0,0,10">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width=".2*"/>
+              <ColumnDefinition Width="75"/>
+              <ColumnDefinition Width="0"/>
               <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Text="{Binding ActiveText}" Style="{StaticResource labelStyle}" />
-            <Label Grid.Column="1" Text="{Binding Time}" Style="{StaticResource labelStyle}" />
+            <Grid VerticalOptions="Center">
+              <Image Source="TimeBg_OUT.png" HeightRequest="75" WidthRequest="75"/>
+              <Label Text="{Binding ActiveText}" Style="{StaticResource labelStyle}" TextColor="White" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <StackLayout Grid.Column="2" VerticalOptions="Center" >
+              <Label Text="{Binding Time}" Style="{StaticResource labelStyle}"  />
+              <Label Grid.Column="1" Text="{Binding Time}" Style="{StaticResource labelStyle}" FontSize="12"/>
+            </StackLayout>
           </Grid>
         </ViewCell>
       </DataTemplate>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <Grid>
-    <ListView ItemsSource="{Binding Session.TimeLine}" ItemTemplate="{StaticResource TimeLineTemplate}"/>
+  <Grid Padding="12">
+    <ListView ItemsSource="{Binding Session.TimeLine}" ItemTemplate="{StaticResource TimeLineTemplate}" ListView.RowHeight="75"/>
   </Grid>
 </ContentPage>

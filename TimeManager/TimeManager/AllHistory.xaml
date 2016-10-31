@@ -15,16 +15,16 @@
       </Style>
       <DataTemplate x:Key="TimeLineTemplate">
         <ViewCell>
-          <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding DayOfWeek}" Style="{StaticResource labelStyle}" />
-            <Label Text="{Binding TimeDiffText}" Style="{StaticResource labelStyle}" />
+          <StackLayout Grid.Column="2" VerticalOptions="Center" Padding="0,0,0,10" >
+            <Label Text="{Binding DayOfWeek}" Style="{StaticResource labelStyle}"  FontSize="16"/>
+            <Label Grid.Column="1" Text="{Binding TimeDiffText}" Style="{StaticResource labelStyle}" />
           </StackLayout>
         </ViewCell>
       </DataTemplate>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <Grid>
-    <ListView ItemsSource="{Binding AllSessions}" ItemTemplate="{StaticResource TimeLineTemplate}"/>
+  <Grid Padding="12">
+    <ListView ItemsSource="{Binding AllSessions}" ItemTemplate="{StaticResource TimeLineTemplate}" ListView.RowHeight="75"/>
   </Grid>
 
 </ContentPage>
