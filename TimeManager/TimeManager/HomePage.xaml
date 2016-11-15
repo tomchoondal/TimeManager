@@ -53,7 +53,7 @@
           </StackLayout>
           <Label Text="Just tap to enter" Style="{StaticResource labelStyle}" HorizontalOptions="Center"/>
         </StackLayout>
-        <Button Text="{Binding ActiveText}" Command="{Binding InOutCommand}" Grid.Row="1" TextColor="Red" BackgroundColor="{StaticResource PrimaryColor}" FontSize="32" />
+        <Button Text="{Binding ActiveText}" Command="{Binding InOutCommand}" Grid.Row="1" TextColor="White" BackgroundColor="{StaticResource PrimaryColor}" FontSize="40" />
       </Grid>
     </ContentPage>
 

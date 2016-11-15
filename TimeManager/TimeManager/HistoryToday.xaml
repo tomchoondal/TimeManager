@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
+             xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager" xmlns:converters="clr-namespace:TimeManager.Converters;assembly=TimeManager"
              xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"
              x:Class="TimeManager.HistoryToday" Title="History Today" BackgroundColor="#FFFFFF">
   <ContentPage.BindingContext>
@@ -9,6 +9,7 @@
   </ContentPage.BindingContext>
   <ContentPage.Resources>
     <ResourceDictionary>
+      <converters:ActiveTextToImageConverter x:Key="ActiveTextToImageConverter"/>
       <Style x:Key="labelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
         <Setter Property="FontSize" Value="18" />
@@ -23,7 +24,7 @@
               <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid VerticalOptions="Center">
-              <Image Source="TimeBg_OUT.png" HeightRequest="75" WidthRequest="75"/>
+              <Image Source="{Binding ActiveText,Converter={StaticResource ActiveTextToImageConverter}}" HeightRequest="75" WidthRequest="75" />
               <Label Text="{Binding ActiveText}" Style="{StaticResource labelStyle}" TextColor="White" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             </Grid>
             <StackLayout Grid.Column="2" VerticalOptions="Center" >
