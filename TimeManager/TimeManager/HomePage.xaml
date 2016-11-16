@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
              x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
   <TabbedPage.BindingContext>
-        <viewModel:HomeViewModel />
+    <viewModel:HomeViewModel />
   </TabbedPage.BindingContext>
   <TabbedPage.Resources>
     <ResourceDictionary>
@@ -16,7 +16,7 @@
       <Style x:Key="graphlabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Start" />
         <Setter Property="Grid.Row" Value="6" />
         <Setter Property="HorizontalOptions" Value="Center" />
       </Style>
@@ -111,9 +111,15 @@
           </Grid.ColumnDefinitions>
           <BoxView WidthRequest="1" BackgroundColor="Black" Grid.RowSpan="6" HorizontalOptions="Start" />
           <BoxView  Grid.Row="5"  Grid.ColumnSpan="5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <BoxView  Grid.Row="1"  Grid.ColumnSpan="5" Opacity="0.5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <BoxView  Grid.Row="2"  Grid.ColumnSpan="5" Opacity="0.5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <Label Text="Mon" Grid.Column="0" Style="{StaticResource graphlabelStyle}"/>
+          <BoxView  Grid.Row="1"  Grid.ColumnSpan="5" Opacity="0.4" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
+          <BoxView  Grid.Row="2"  Grid.ColumnSpan="5" Opacity="0.4" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
+          <StackLayout Grid.Row="1" Grid.Column="5" Padding="0,10,0,0">
+            <Label Text="10 hr"  Style="{StaticResource graphlabelStyle}" FontSize="12"/>
+          </StackLayout>
+          <StackLayout Grid.Row="2" Grid.Column="5" Padding="0,10,0,0">
+            <Label Text="8 hr"   Style="{StaticResource graphlabelStyle}" FontSize="12" />
+          </StackLayout>
+          <Label Text="Mon"  Grid.Column="0" Style="{StaticResource graphlabelStyle}"/>
           <Label Text="Tue" Grid.Column="1" Style="{StaticResource graphlabelStyle}"/>
           <Label Text="Wed" Grid.Column="2" Style="{StaticResource graphlabelStyle}"/>
           <Label Text="Thu" Grid.Column="3" Style="{StaticResource graphlabelStyle}"/>
