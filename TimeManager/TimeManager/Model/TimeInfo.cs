@@ -28,6 +28,22 @@ namespace TimeManager.Model
             }
         }
 
+        public string TimeText
+        {
+            get
+            {
+                return Time.ToString("hh:mm:tt");
+            }
+        }
+
+        public string TimeDayText
+        {
+            get
+            {
+                return Time.DayOfWeek.ToString();
+            }
+        }
+
         #endregion
     }
 }

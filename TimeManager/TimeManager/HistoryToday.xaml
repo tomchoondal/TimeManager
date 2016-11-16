@@ -28,8 +28,8 @@
               <Label Text="{Binding ActiveText}" Style="{StaticResource labelStyle}" TextColor="White" FontSize="24" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             </Grid>
             <StackLayout Grid.Column="2" VerticalOptions="Center" >
-              <Label Text="{Binding Time}" Style="{StaticResource labelStyle}"  />
-              <Label Grid.Column="1" Text="{Binding Time}" Style="{StaticResource labelStyle}" FontSize="12"/>
+              <Label Text="{Binding TimeText}" Style="{StaticResource labelStyle}"  />
+              <Label Grid.Column="1" Text="{Binding TimeDayText}" Style="{StaticResource labelStyle}" FontSize="12"/>
             </StackLayout>
           </Grid>
         </ViewCell>
