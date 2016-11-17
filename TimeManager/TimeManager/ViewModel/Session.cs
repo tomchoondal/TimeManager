@@ -13,6 +13,8 @@ namespace TimeManager.ViewModel
         private TimeInfo endTime;
         private string timeDiffText;
         private bool isActive;
+        private float sessionPercentage;
+        private TimeSpan sessionTime;
 
         #endregion
 
@@ -83,7 +85,19 @@ namespace TimeManager.ViewModel
             }
         }
 
-        public TimeSpan SessionTime { get; set; }
+        public TimeSpan SessionTime
+        {
+            get
+            {
+                return sessionTime;
+            }
+            set
+            {
+                sessionTime = value;
+                TimeSpan divisionTime = new TimeSpan(8, 0, 0);
+                SessionPercentage = ((SessionTime.Ticks * 100) / divisionTime.Ticks) ;
+            }
+        }
 
         public List<TimeInfo> TimeLine { get; set; }
 
@@ -97,6 +111,22 @@ namespace TimeManager.ViewModel
             {
                 timeDiffText = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public float SessionPercentage
+        {
+            get
+            {
+                return sessionPercentage;
+            }
+            set
+            {
+                if (value != sessionPercentage)
+                {
+                    sessionPercentage = value;
+                    RaisePropertyChanged(); 
+                }
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModel="clr-namespace:TimeManager.ViewModel;assembly=TimeManager"
-             x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" >
+             x:Class="TimeManager.HomePage" Title="TimeManager" BackgroundColor="#3F51B5" xmlns:horizontalList="clr-namespace:HorizontalList;assembly=HorizontalList">
   <TabbedPage.BindingContext>
     <viewModel:HomeViewModel />
   </TabbedPage.BindingContext>
@@ -16,9 +16,9 @@
       <Style x:Key="graphlabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="Black" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="VerticalOptions" Value="Start" />
-        <Setter Property="Grid.Row" Value="6" />
-        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="HorizontalOptions" Value="Start" />
       </Style>
       <Style x:Key="barBoxViewStyle" TargetType="BoxView">
         <Setter Property="BackgroundColor" Value="Black" />
@@ -32,6 +32,7 @@
         <Setter Property="HeightRequest" Value="1" />
         <Setter Property="VerticalOptions" Value="End" />
       </Style>
+
     </ResourceDictionary>
   </TabbedPage.Resources>
   <TabbedPage.Children>
@@ -89,48 +90,66 @@
         </Grid.RowDefinitions>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,24,0,0" >
           <Label Text="Total Time:"  Style="{StaticResource labelStyle}" FontSize="32"/>
-          <Label Text="40 Hrs"  Style="{StaticResource labelStyle}" FontSize="32"/>
+          <Label Text="{Binding WeekTotalTime}"  Style="{StaticResource labelStyle}" FontSize="32"/>
         </StackLayout>
-        <Grid Grid.Row="1" Padding="12">
+        <Grid Grid.Row="1" Padding="12" HorizontalOptions="Start">
           <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="50"/>
           </Grid.ColumnDefinitions>
-          <BoxView WidthRequest="1" BackgroundColor="Black" Grid.RowSpan="6" HorizontalOptions="Start" />
-          <BoxView  Grid.Row="5"  Grid.ColumnSpan="5" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <BoxView  Grid.Row="1"  Grid.ColumnSpan="5" Opacity="0.4" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <BoxView  Grid.Row="2"  Grid.ColumnSpan="5" Opacity="0.4" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
-          <StackLayout Grid.Row="1" Grid.Column="5" Padding="0,10,0,0">
-            <Label Text="10 hr"  Style="{StaticResource graphlabelStyle}" FontSize="12"/>
+          <BoxView WidthRequest="1" BackgroundColor="Black" Grid.Column="1" Grid.RowSpan="5" HorizontalOptions="Start" />
+          <BoxView x:Name="seperator"  Grid.Row="4"  Grid.ColumnSpan="4" Grid.Column="1" Style="{StaticResource horizontalseperatorBoxViewStyle}"/>
+          <Grid Grid.RowSpan="5" Grid.Column="2"  Padding="0,0,5,0">
+            <BoxView  Opacity="1" BackgroundColor="Green"  WidthRequest="1" HorizontalOptions="End"/>
+          </Grid>
+          <Grid Grid.RowSpan="5" Grid.Column="3" Padding="0,0,5,0">
+           <BoxView  Opacity="1" BackgroundColor="Blue"  WidthRequest="1" HorizontalOptions="End"/>
+          </Grid>
+          <Grid Grid.RowSpan="5" Grid.Column="1" Padding="0,0,5,0">
+           <BoxView  Opacity="1" BackgroundColor="Red"  WidthRequest="1" HorizontalOptions="End"/>
+          </Grid>
+          <StackLayout Grid.Row="5" Grid.Column="3" Padding="0,0,-10,0">
+            <Label Text="10 hr"  Style="{StaticResource graphlabelStyle}" FontSize="14" HorizontalOptions="End"/>
           </StackLayout>
-          <StackLayout Grid.Row="2" Grid.Column="5" Padding="0,10,0,0">
-            <Label Text="8 hr"   Style="{StaticResource graphlabelStyle}" FontSize="12" />
+          <StackLayout Grid.Row="5" Grid.Column="2" Padding="0,0,-10,0">
+            <Label Text="8 hr"   Style="{StaticResource graphlabelStyle}" FontSize="14" HorizontalOptions="End"/>
           </StackLayout>
-          <Label Text="Mon"  Grid.Column="0" Style="{StaticResource graphlabelStyle}"/>
-          <Label Text="Tue" Grid.Column="1" Style="{StaticResource graphlabelStyle}"/>
-          <Label Text="Wed" Grid.Column="2" Style="{StaticResource graphlabelStyle}"/>
-          <Label Text="Thu" Grid.Column="3" Style="{StaticResource graphlabelStyle}"/>
-          <Label Text="Fri" Grid.Column="4" Style="{StaticResource graphlabelStyle}"/>
-          <BoxView Grid.Column="0"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
-          <BoxView Grid.Column="1"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
-          <BoxView Grid.Column="2" HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
-          <BoxView Grid.Column="3"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
-          <BoxView Grid.Column="4"  HeightRequest="80" Style="{StaticResource barBoxViewStyle}"/>
+            <StackLayout Grid.Row="5" Grid.Column="1" Padding="0,0,-10,0">
+            <Label Text="4 hr"   Style="{StaticResource graphlabelStyle}" FontSize="14" HorizontalOptions="End"/>
+          </StackLayout>
+          <Label Text="Mon"  Grid.Row="0" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Tue" Grid.Row="1" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Wed" Grid.Row="2" Style="{StaticResource graphlabelStyle}"/>
+          <Label Text="Thu" Grid.Row="3" Style="{StaticResource graphlabelStyle}"/>
+          <Label  Text="Fri" Grid.Row="4" Style="{StaticResource graphlabelStyle}"/>
+          <!--<BoxView Grid.Column="0"  HeightRequest="{Binding AllSession[0].SessionPercentage}" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="1"  HeightRequest="{Binding AllSession[1].SessionPercentage}" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="2" HeightRequest="{Binding AllSession[2].SessionPercentage}" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="3"  HeightRequest="{Binding AllSession[3].SessionPercentage}" Style="{StaticResource barBoxViewStyle}"/>
+          <BoxView Grid.Column="4"  HeightRequest="{Binding AllSession[4].SessionPercentage}" Style="{StaticResource barBoxViewStyle}"/>-->
+          <ListView ItemsSource="{Binding AllSession}"  Grid.RowSpan="5" Grid.ColumnSpan="4" Grid.Column="1" ListView.RowHeight="45" >
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid>
+                    <BoxView HeightRequest="25"  WidthRequest="{Binding SessionPercentage}" VerticalOptions="Center"  BackgroundColor="Black" HorizontalOptions="Start" />
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
         </Grid>
-
+       
         <Button Text="View Complete History" Command="{Binding NavigateToAllHistory}" Grid.Row="2" FontSize="18" BackgroundColor="{StaticResource PrimaryColor}"/>
       </Grid>
     </ContentPage>

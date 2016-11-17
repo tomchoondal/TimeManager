@@ -21,6 +21,7 @@ namespace TimeManager.ViewModel
         private string inTimeText;
         private string outTimeText;
         private string timeDiffText;
+        private string weekTotalTime;
 
         private ICommand inOutCommand;
         private ICommand navigateToHistoryToday;
@@ -163,6 +164,19 @@ namespace TimeManager.ViewModel
             }
         }
 
+        public string WeekTotalTime
+        {
+            get
+            {
+                return weekTotalTime;
+            }
+            set
+            {
+                weekTotalTime = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -237,6 +251,7 @@ namespace TimeManager.ViewModel
         private void ComputeLastSession()
         {
             LastSession = AllSession.FirstOrDefault(s => s.BeginTime != null && s.BeginTime.Time.Date == DateTime.Now.Date);
+           
         }
 
         public async override Task Init()
