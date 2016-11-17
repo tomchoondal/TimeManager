@@ -206,6 +206,9 @@ namespace TimeManager.ViewModel
                 {
                     TimeSpan timeDiff = endTime.Time - beginTime.Time;
                     TimeDiffText = string.Format("{0}h:{1}m", timeDiff.Hours, timeDiff.Minutes);
+                    var weeklyTime = new TimeSpan(AllSession.Sum(s => s.SessionTime.Ticks));
+                    WeekTotalTime = string.Format("{0}h:{1}m", weeklyTime.Hours, weeklyTime.Minutes);
+
                 }
             }
         }

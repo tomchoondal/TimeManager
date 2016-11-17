@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TimeManager.Model;
@@ -114,6 +115,7 @@ namespace TimeManager.ViewModel
             }
         }
 
+        [JsonIgnore]
         public float SessionPercentage
         {
             get
